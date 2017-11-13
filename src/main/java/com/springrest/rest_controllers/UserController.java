@@ -44,7 +44,8 @@ public class UserController {
 
     //Delete
     @RequestMapping(method= RequestMethod.DELETE, value="/")
-    public User deleteById(@RequestParam(value="id")int id){
-        return userService.deleteById(id);
+    public User deleteById(@RequestBody User user){
+        return userService.deleteById(user.getId());
+
     }
 }
