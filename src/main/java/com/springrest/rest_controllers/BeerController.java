@@ -5,10 +5,7 @@ import com.springrest.model.beer.Beer;
 import com.springrest.model.beer.Data;
 import com.springrest.services.BeerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BeerController {
@@ -28,6 +25,8 @@ public class BeerController {
 
     //POSTMAN METHODS
 
+
+    //patch
     @RequestMapping(method = RequestMethod.PATCH, value = "/patch")
     public Data updateData(@RequestBody Data data) {
         service.updateData((data));
@@ -35,9 +34,20 @@ public class BeerController {
     }
 
 
+    //Put
+    @RequestMapping(method = RequestMethod.PUT, value = "/put")
+    public Data createData(@RequestBody Data data) {
+        service.createData((data));
+        return data;
+    }
+
+
+
+
+
 
     //Delete // could return a json message saying successfully deleted
-    @RequestMapping(method= RequestMethod.DELETE, value="/")
+    @RequestMapping(method= RequestMethod.DELETE, value ="/")
     public void deleteById(@RequestBody Data data){
         Data d = data;
         service.deleteById(data.getId());
@@ -46,12 +56,14 @@ public class BeerController {
 
     //GET
     @RequestMapping(method= RequestMethod.GET, value="/one")
-    public Data getOne(){
+    public Data selectOne() {
         Data d = service.getOne();
         return d;
 
-    }
 
+    }
 }
+
+
 
 

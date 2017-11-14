@@ -31,7 +31,6 @@ public interface BeerMapper {
 
         String SELECT_DATA = "Select * from `beer`.`data` where name = #{name}";
 
-        String SELECT_ONE = "Select * from `beer`.`data` limit 1";
 
         String SELECT_STYLE = "select * from `beer`.`style` where id = #{id}";
 
@@ -68,19 +67,43 @@ public interface BeerMapper {
 
         //Postman
 
+        //delete
         String DELETE = "Delete From `beer`.data  WHERE id = #{id}";
 
+        //patch
         String UPDATE = "UPDATE `beer`.data SET name= #{name}, nameDisplay= #{nameDisplay}, description= #{description}," +
                 "abv= #{abv}, styleId= #{styleId}, isOrganic= #{isOrganic}, status= #{status}, statusDisplay= #{statusDisplay}," +
                 "createDate= #{createDate}, updateDate= #{updateDate} WHERE id= #{id}";
 
 
+        //get
+         String SELECT_ONE = "Select * from `beer`.`data` limit 1";
+
+
+        //put
+        String PUT = "INSERT INTO `beer`.data (name, nameDisplay, description, " +
+                "abv, styleId, isOrganic, status, statusDisplay," +
+                " createDate, updateDate)" + "VALUES (#{name}, #{nameDisplay}, #{description}, #{abv}, " +
+                "#{styleId}, #{isOrganic}, #{status}, #{createDate}, #{updateDate}, #{statusDisplay})";
+
+
+
+
+
+        //put
+        @Insert(PUT)
+        public int createData();
+
+
+        //get
         @Select(SELECT_ONE)
         public Data GetOneData();
 
+        //delete
         @Delete(DELETE)
         public int deleteData(String id);
 
+        //patch
         @Update(UPDATE)
         public int updateData(Data data);
 }

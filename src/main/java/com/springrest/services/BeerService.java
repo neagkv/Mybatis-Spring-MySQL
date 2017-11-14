@@ -101,6 +101,13 @@ public class BeerService {
     }
 
 
+    //put
+    public Data createData(Data data) {
+        mapper.createData();
+        return mapper.GetDataName(data.getName());
+    }
+
+
 }
 
 

@@ -26,8 +26,6 @@ public class NYTController {
             return service.getNYTTopStories(query);
 
 
-
-
     }
 
 
@@ -59,14 +57,7 @@ public class NYTController {
         } catch (SectionNotFoundException down) {
 
             throw down;
-
-//            response.setMessage("error");
-//            response.setError(e);
-//            response.setStatus_code(400);
-
-//            return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
         }
-
 
     }
 
