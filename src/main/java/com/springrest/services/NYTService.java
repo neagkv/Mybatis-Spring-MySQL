@@ -27,7 +27,6 @@ public class NYTService {
                     "http://api.nytimes.com/svc/topstories/v2/home.json?apikey=bae493523d714a96a74585c6bc2d1312", NYTTopStories.class);
 
             insertTopStories(top);
-
             return top;
 
         }
